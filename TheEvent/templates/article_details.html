@@ -1,0 +1,44 @@
+{%extends 'base.html'%}
+
+{%block content %}
+
+    <a href="{% url 'home' %}"> Back </a>
+<h2>
+    {{event.title}}
+</h2>
+    <small> 
+        By: {{event.author.first_name}} {{event.author.last_name}}
+    </small> <br>
+    <hr>
+    <br>
+    Description: {{event.description}}
+    <br>
+    Location: {{event.location}}
+    <br>
+
+    {%if event.price%}
+    Price: {{event.price}}
+    {%else%}
+    Price: Free
+    {%endif%}
+    <br>
+
+    {%if event.space_capacity%}
+    Space Capacity: {{event.space_capacity}}
+    {%else%}
+    Space Capacity: Unlimited
+    {%endif%}
+    <br>
+
+    {%if event.event_date%}
+    Event Date:{{event.event_date}}
+    {%endif%}
+    <br>
+
+    {%if event.event_end_date%}
+    End of Registration Date :{{event.event_end_date}}
+    {{event.header_image}}
+    {%endif%}
+
+
+{%endblock%}

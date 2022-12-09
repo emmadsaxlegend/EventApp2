@@ -1,0 +1,37 @@
+{%extends 'base.html'%}
+
+{%block content %}
+
+    <h2> Events </h2>
+
+    <ul>
+    {% for event in object_list%}
+        <li><a href="{% url 'article-detail' event.pk %}"> {{event.title}}</a>- {{event.author}}<br/>
+            First Name: {{event.author.first_name}}<br/>
+            Last Name: {{event.author.last_name}}<br>
+            Description: {{event.description}}<br>
+            Location: {{event.location}} <br>
+
+            {%if event.price%}
+                Price: {{event.price}}<br>
+            {%else%}
+                Price: Free <br>
+            {%endif%}
+
+            {%if event.space_capacity%}
+            Space Capacity: {{event.space_capacity}}<br>
+            {%endif%}
+
+            Event Date: {{event.event_date}} <br>
+
+            {%if event.event_end_date%}
+                End of Registration Date: {{event.event_end_date}} 
+            {%endif%}
+    </li>
+    <hr>
+    {% endfor %}
+   
+
+    </ul>
+
+    {%endblock%}
