@@ -6,6 +6,9 @@
 
     <ul>
     {% for event in object_list%}
+    <a href="{% url 'update_event' event.pk%}"> Edit Event </a>
+    <a href="{% url 'delete_event' event.pk%}"> Delete Event </a>
+
         <li><a href="{% url 'article-detail' event.pk %}"> {{event.title}}</a>- {{event.author}}<br/>
             First Name: {{event.author.first_name}}<br/>
             Last Name: {{event.author.last_name}}<br>
@@ -30,8 +33,6 @@
     </li>
     <hr>
     {% endfor %}
-   
-
     </ul>
 
     {%endblock%}

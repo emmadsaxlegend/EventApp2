@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Event
 from .forms import EventForm
 from django.contrib import messages
@@ -32,3 +32,11 @@ class AddFreeEventView(CreateView):
     # fields = '__all__'
     #fields = ('author', 'title', 'location', 'description', 'event_date')
 
+class UpdateEventView(UpdateView):
+    model = Event
+    template_name = 'update-event.html'
+    fields = ['title', 'location', 'price', 'space_capacity', 'description', 'event_date', 'event_end_date']
+
+class DeleteEventView(DeleteView):
+    model = Event
+    template_name = 'delete_post.html'
